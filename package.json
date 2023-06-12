@@ -1,0 +1,33 @@
+{
+  "name": "@fredrikhr/avinor-aip",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "Fredrik Høisæther Rasch",
+    "email": "fredrik.rasch@gmail.com",
+    "url": "https://github.com/fredrikhr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fredrikhr/avinor-aip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thnetii/microsoft-odata-csdl/issues"
+  },
+  "homepage": "https://github.com/thnetii/microsoft-odata-csdl#readme",
+  "license": "MIT",
+  "workspaces": [
+    ".github/actions/*"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/eslint-parser": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@thnetii/eslint-config-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?8425c1a019bdcfccf71ca2407312eb9c20dd8006",
+    "@tsconfig/node16": "^1",
+    "@tsconfig/strictest": "^2",
+    "eslint": "^8.42",
+    "prettier": "^2.8",
+    "typescript": "^5"
+  }
+}

@@ -7,3 +7,9 @@ updates:
       interval: daily
     reviewers:
       - fredrikhr
+  - directory: /
+    package-ecosystem: npm
+    schedule:
+      interval: daily
+    reviewers:
+      - fredrikhr

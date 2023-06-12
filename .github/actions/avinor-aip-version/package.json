@@ -1,0 +1,29 @@
+{
+  "name": "@fredrikhr/avinor-aip-github-actions-avinor-aip-version",
+  "version": "0.0.0",
+  "private": true,
+  "author": {
+    "name": "Fredrik Høisæther Rasch",
+    "email": "fredrik.rasch@gmail.com",
+    "url": "https://github.com/fredrikhr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fredrikhr/avinor-aip.git",
+    "directory": ".github/actions/avinor-aip-version"
+  },
+  "bugs": {
+    "url": "https://github.com/thnetii/microsoft-odata-csdl/issues"
+  },
+  "homepage": "https://github.com/thnetii/microsoft-odata-csdl#readme",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "type": "module",
+  "main": "action.js",
+  "dependencies": {
+    "node-fetch": "^3",
+    "tough-cookie": "^4.1.3"
+  }
+}

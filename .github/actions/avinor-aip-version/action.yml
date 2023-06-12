@@ -1,0 +1,6 @@
+name: '@fredrikhr/avinor-aip-github-actions-avinor-aip-version'
+description: ''
+author: fredrikhr
+runs:
+  using: node16
+  main: action.js
