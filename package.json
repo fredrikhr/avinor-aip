@@ -26,7 +26,7 @@
     "@thnetii/eslint-config-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?8425c1a019bdcfccf71ca2407312eb9c20dd8006",
     "@tsconfig/node16": "^1",
     "@tsconfig/strictest": "^2",
-    "eslint": "^8.42",
+    "eslint": "^8.43",
     "prettier": "^2.8",
     "typescript": "^5"
   }
