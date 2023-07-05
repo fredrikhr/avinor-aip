@@ -21,7 +21,7 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.2.0",
-    "@babel/eslint-parser": "^7.2.0",
+    "@babel/eslint-parser": "^7.22.6",
     "@babel/preset-env": "^7.2.0",
     "@thnetii/eslint-config-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?8425c1a019bdcfccf71ca2407312eb9c20dd8006",
     "@tsconfig/node16": "^16",
