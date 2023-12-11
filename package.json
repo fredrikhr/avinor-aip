@@ -27,7 +27,7 @@
     "@tsconfig/node16": "^16",
     "@tsconfig/strictest": "^2",
     "eslint": "^8.52",
-    "prettier": "^3.0",
+    "prettier": "^3.1",
     "typescript": "^5"
   }
 }
