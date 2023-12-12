@@ -20,7 +20,7 @@
     ".github/actions/*"
   ],
   "devDependencies": {
-    "@babel/core": "^7.23.2",
+    "@babel/core": "^7.23.6",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/preset-env": "^7.23.2",
     "@thnetii/eslint-config-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?8425c1a019bdcfccf71ca2407312eb9c20dd8006",
