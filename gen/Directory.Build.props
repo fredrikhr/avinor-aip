@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+  <PropertyGroup Label="BasePath">
+    <BaseOutputPath>$(MSBuildThisFileDirectory)..\bin\$(MSBuildProjectName)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Label="SourceLink">
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugType Condition=" '$(DebugType)' == '' ">portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+  </PropertyGroup>
+</Project>

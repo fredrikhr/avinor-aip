@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+  <Target
+    Name="AddRepositoryLicenceFileToPackage"
+    BeforeTargets="Build"
+    Condition="'$(PackageLicenseFile)' == ''"
+  >
+    <PropertyGroup>
+      <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <None Include="$(MSBuildThisFileDirectory)..\LICENSE">
+        <Pack>true</Pack>
+        <PackagePath></PackagePath>
+      </None>
+    </ItemGroup>
+  </Target>
+</Project>

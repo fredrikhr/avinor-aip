@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+  <ItemGroup>
+    <PackageReference Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
