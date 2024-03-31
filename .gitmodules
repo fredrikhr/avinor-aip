@@ -1,0 +1,4 @@
+[submodule "thnetii/dotnet-command-line"]
+	path = .submodules/thnetii/dotnet-command-line
+	url = https://github.com/thnetii/dotnet-command-line.git
+	branch = main
