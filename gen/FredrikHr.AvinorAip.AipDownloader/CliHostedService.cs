@@ -30,6 +30,11 @@ internal class CliHostedService(
             .LoadEnr2Dot1AtsAirspaces(enr2dot1.Uri, aipDataSet, stoppingToken)
             .ConfigureAwait(continueOnCapturedContext: false);
 
+        var enr2dot2 = menu["ENR-2.2"];
+        await aipClient.Enr2
+            .LoadEnr2Dot2AtsAirspaces(enr2dot2.Uri, aipDataSet, stoppingToken)
+            .ConfigureAwait(continueOnCapturedContext: false);
+
         var enr4dot1 = menu["ENR-4.1"];
         await aipClient.Enr4
             .LoadRadioNavigationAids(enr4dot1.Uri, aipDataSet, stoppingToken)

@@ -30,11 +30,75 @@ public class AipEnr2HttpClient(AipHttpClient aipClient)
             $"""/{xhtml}:table/{xhtml}:tbody/{xhtml}:tr""",
             xmlNsRes
             );
+
+        LoadAtsAirspaceTableRows(enr2dot1Rows, aipDataSet, xmlNsRes);
+    }
+
+    public async Task LoadEnr2Dot2AtsAirspaces(
+        Uri aipEnr2Dot1Uri,
+        AipSDDataSet aipDataSet,
+        CancellationToken cancelToken = default
+        )
+    {
+        ArgumentNullException.ThrowIfNull(aipDataSet);
+        AipXHtmlDocument xhtmlInfo = await aipClient.GetAipXHtmlDocumentAsync(
+            aipEnr2Dot1Uri,
+            cancelToken
+            ).ConfigureAwait(continueOnCapturedContext: false);
+        XDocument xdoc = xhtmlInfo.Dom;
+        IXmlNamespaceResolver? xmlNsRes = xhtmlInfo.NamespaceResolver;
+
+        IEnumerable<string> enr2dot2airspacesubSections = [
+            $"""/{xhtml}:div[@id = "ENR-2.2.1"]""",
+            $"""/{xhtml}:div[@id = "ENR-2.2.2"]""",
+            $"""/{xhtml}:div[@id = "ENR-2.2.3"]""",
+            $"""/{xhtml}:div[@id = "ENR-2.2.5"]""",
+            $"""/{xhtml}:div[@id = "ENR-2.2.6"]""",
+            ];
+        foreach (var enr2dot2subSectionExpr in enr2dot2airspacesubSections)
+        {
+            var enr2dot2subDivRowElements = xdoc.XPathSelectElements(
+                $"""/{xhtml}:html/{xhtml}:body//{xhtml}:div[@id = "ENR-2.2"]""" +
+                enr2dot2subSectionExpr +
+                $"""/{xhtml}:table/{xhtml}:tbody/{xhtml}:tr""",
+                xmlNsRes
+                );
+            LoadAtsAirspaceTableRows(enr2dot2subDivRowElements, aipDataSet, xmlNsRes);
+        }
+
+        IEnumerable<string> enr2dot2regularSubSections = [
+            $"""/{xhtml}:div[@id = "ENR-2.2.3"]""" +
+            $"""/{xhtml}:div[@id = "ENR-2.2.3.2"]""",
+            $"""/{xhtml}:div[@id = "ENR-2.2.4"]""",
+            ];
+        foreach (var enr2dot2subSectionExpr in enr2dot2regularSubSections)
+        {
+            var enr2dot2subDivRowElements = xdoc.XPathSelectElements(
+                $"""/{xhtml}:html/{xhtml}:body//{xhtml}:div[@id = "ENR-2.2"]""" +
+                enr2dot2subSectionExpr +
+                $"""/{xhtml}:table/{xhtml}:tbody/{xhtml}:tr""",
+                xmlNsRes
+                );
+            foreach (XElement enr2dot2subDivRowElement in enr2dot2subDivRowElements)
+            {
+                _ = aipDataSet.LoadXHtmlTableRow(enr2dot2subDivRowElement, xmlNsRes);
+            }
+        }
+    }
+
+    private static void LoadAtsAirspaceTableRows(
+        IEnumerable<XElement> airspaceRowElements,
+        AipSDDataSet aipDataSet,
+        IXmlNamespaceResolver? xmlNsRes
+        )
+    {
         DataRow airspaceDataRow = null!;
-        foreach (var airspaceRowElement in enr2dot1Rows)
+        foreach (var airspaceRowElement in airspaceRowElements)
         {
             var airspaceSubDataRows = aipDataSet
                 .LoadXHtmlTableRow(airspaceRowElement, xmlNsRes, skipRelationships: true);
+            if (airspaceSubDataRows.FirstOrDefault(dr => dr.Table.TableName == "TAIRSPACE") is DataRow airspaceNewDataRow)
+                airspaceDataRow = airspaceNewDataRow;
             var aispaceSubDataRowGroups = airspaceSubDataRows
                 .GroupBy(airspaceSubDataRow => airspaceSubDataRow.Table);
             DataRow? airspacePolygonRow = null;
@@ -43,10 +107,6 @@ public class AipEnr2HttpClient(AipHttpClient aipClient)
                 var tableName = airspaceDataRowGrouping.Key.TableName;
                 switch (tableName)
                 {
-                    case "TAIRSPACE":
-                        airspaceDataRow = airspaceDataRowGrouping.Single();
-                        break;
-
                     case "TAIRSPACE_VERTEX":
                         DataColumn airspaceVertexRowIdDataColumn = airspaceDataRowGrouping.Key.PrimaryKey.Single();
                         DataColumn airspaceVertexNextDataColumn =
